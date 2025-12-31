@@ -12,27 +12,55 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Build APK with Buildozer
-        uses: ArtemSBulgakov/buildozer-action@v1
-        id: buildozer
+      # IMPORTANT: make sure Buildozer sees main.py
+      # If your buildozer.spec has source.dir = src, either change it to "."
+      # or move main.py into src/.
+
+      - name: Cache Buildozer downloads
+        uses: actions/cache@v4
         with:
-          workdir: .
-          buildozer_version: stable
-          command: buildozer -v android debug
-        env:
-          USER: root
-          PIP_BREAK_SYSTEM_PACKAGES: "1"
+          path: |
+            .buildozer
+          key: buildozer-${{ runner.os }}-${{ hashFiles('buildozer.spec') }}
 
-      - name: Upload as artifact (always)
+      - name: Workaround: pre-download Apache Ant 1.9.4
+        shell: bash
+        run: |
+          set -e
+          mkdir -p .buildozer/android/platform
+          cd .buildozer/android/platform
+
+          if [ ! -d "apache-ant-1.9.4" ]; then
+            echo "Downloading Ant..."
+            curl -4 -L --retry 5 --retry-delay 3 \
+              -o apache-ant-1.9.4-bin.tar.gz \
+              https://archive.apache.org/dist/ant/binaries/apache-ant-1.9.4-bin.tar.gz
+            tar -xzf apache-ant-1.9.4-bin.tar.gz
+          else
+            echo "Ant already present."
+          fi
+
+      - name: Build APK (debug)
+        shell: bash
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/home/user/hostcwd" \
+            -v "${{ github.workspace }}/.buildozer:/home/user/.buildozer" \
+            --workdir /home/user/hostcwd \
+            kivy/buildozer -v android debug
+
+      - name: Upload APK as workflow artifact
         uses: actions/upload-artifact@v4
         with:
           name: apk
-          path: ${{ steps.buildozer.outputs.filename }}
+          path: bin/*.apk
 
-      - name: Upload to GitHub Release (on tags)
+      - name: Upload APK to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: ${{ steps.buildozer.outputs.filename }}
+          files: bin/*.apk
