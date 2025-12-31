@@ -87,7 +87,7 @@ class CalculationScreen(Screen):
         
         
         next_button = IconButton(text="ذخیره", size_hint=(0.5, 1))
-        next_button.bind(on_press=lambda x: go_to(self.manager, 'current') if self.did_math else None)
+        next_button.bind(on_press=lambda x: go_to(self.manager, 'summary') if self.did_math else None)
         
         home_button = IconButton(text="صفحه اصلی", size_hint=(0.5, 1))
         home_button.bind(on_press=lambda x: go_to(self.manager, 'general'))
