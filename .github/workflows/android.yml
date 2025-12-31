@@ -28,7 +28,7 @@ jobs:
             .buildozer
           key: buildozer-${{ runner.os }}-${{ hashFiles('buildozer.spec') }}
 
-      - name: Workaround: pre-download Apache Ant 1.9.4
+      - name: Workaround- pre-download Apache Ant 1.9.4
         shell: bash
         run: |
           set -e
