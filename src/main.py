@@ -72,7 +72,7 @@ LabelBase.register(name='vazir', fn_regular='assets/fonts/Vazir-Medium.ttf')
 class SecondScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        layout = BoxLayout(orientation='vertical', padding=20, spacing=10)
+        layout = BoxLayout(orientation='vertical', padding=40, spacing=40)
         
         layout.add_widget(Label(text='Step 2: Additional Info (Placeholder)'))
         

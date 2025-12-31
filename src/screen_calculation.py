@@ -78,7 +78,7 @@ class CalculationScreen(Screen):
         self.did_math = False
                 
         ## Create the page layout
-        layout = BoxLayout(orientation='vertical', padding=30, spacing=30)
+        layout = BoxLayout(orientation='vertical', padding=50, spacing=50)
 
         ## seperate input and calculation layout
         INPT_layout = BoxLayout(orientation='vertical', padding=30, spacing=30, size_hint=(1, 0.55))
@@ -87,7 +87,7 @@ class CalculationScreen(Screen):
         
         
         next_button = IconButton(text="ذخیره", size_hint=(0.5, 1))
-        next_button.bind(on_press=lambda x: setattr(self.manager, 'current', 'summary') if self.did_math else None)
+        next_button.bind(on_press=lambda x: go_to(self.manager, 'current') if self.did_math else None)
         
         home_button = IconButton(text="صفحه اصلی", size_hint=(0.5, 1))
         home_button.bind(on_press=lambda x: go_to(self.manager, 'general'))

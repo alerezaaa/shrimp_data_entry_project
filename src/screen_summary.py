@@ -31,7 +31,7 @@ import arabic_reshaper
 class SummaryScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        layout = BoxLayout(orientation='vertical', padding=20, spacing=10)
+        layout = BoxLayout(orientation='vertical', padding=50, spacing=50)
         
         layout.add_widget(Label(text=persian_text("خلاصه اطلاعات"), halign='right', font_name='vazir_bold', font_size=sp(24), size_hint=(1, 0.1)))
         
@@ -79,6 +79,10 @@ class SummaryScreen(Screen):
                         
         if r:
             self.show_record(r)
+        self.submit_btn.children[0].text = persian_text("ذخیره اطلاعات")
+        self.submit_btn.disabled = False  # Disable to prevent multiple submissions
+        self.submit_btn.opacity = 0.9  # Visual feedback
+        self.back_btn.children[0].text = persian_text("بازگشت")
             
     def go_back(self, instance):
         self.show_record({})
@@ -86,6 +90,7 @@ class SummaryScreen(Screen):
             go_to(self.manager, 'history')
         else:
             go_to(self.manager, 'calculation')
+
     
     def submit_data(self, instance):
         app = App.get_running_app()

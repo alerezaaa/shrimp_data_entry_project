@@ -65,8 +65,8 @@ class HistoryRow(BoxLayout):
         # super().__init__(orientation='horizontal', padding=10, spacing=10, size_hint_y=None, height=40, **kwargs)
         super().__init__(
             orientation='horizontal', 
-            padding=20, 
-            spacing=5, 
+            padding=50, 
+            spacing=40, 
             size_hint_y=None, 
             height=sp(50), # or 40
             size_hint_x=None,  # Tell Kivy not to squash the width

@@ -20,7 +20,7 @@ class ContactUsScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        root = BoxLayout(orientation="vertical", padding=20, spacing=10)
+        root = BoxLayout(orientation="vertical", padding=50, spacing=50)
 
         title = Label(
             text=persian_text("تماس با ما"),
