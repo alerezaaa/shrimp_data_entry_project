@@ -8,3 +8,5 @@ using `db.py`. The application is launched from `main.py`, UI screens are implem
 the `screen_*.py` modules, and `persian_helper.py` offers Persian localization support.
 Included assets (fonts and images) are in the `assets/` folder. Use `buildozer.spec` to
 package the app for Android if you want a mobile build.
+
+#### Github repository (I will update): https://github.com/alerezaaa/shrimp_data_entry_project
