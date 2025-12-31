@@ -10,7 +10,7 @@ package.name = shrimp_farming_decision_app
 package.domain = ir.alirezad
 
 # (str) Source code where the main.py live
-source.dir = src
+source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
 source.include_exts = py,png,jpg,kv,atlas,ttf
