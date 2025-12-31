@@ -51,6 +51,14 @@ jobs:
         # Cython pin rationale: known incompatibilities with Cython 3.x in build recipes
         # :contentReference[oaicite:3]{index=3}
 
+
+      - name: Install build prerequisites (autoconf/libtool for libffi)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            autoconf automake libtool libtool-bin libltdl-dev pkg-config
+
+
       - name: Build APK (debug)
         env:
           ANDROIDSDK: ${{ env.ANDROID_SDK_ROOT }}
