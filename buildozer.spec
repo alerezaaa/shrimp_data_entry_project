@@ -125,7 +125,7 @@ android.ndk_api = 21
 #android.sdk_path =
 
 # (str) ANT directory (if empty, it will be automatically downloaded.)
-#android.ant_path =
+android.ant_path = ant
 
 # (bool) If True, then skip trying to update the Android sdk
 # This can be useful to avoid excess Internet downloads or save time
