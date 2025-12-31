@@ -35,7 +35,6 @@ version = 0.0.3
 # version.regex = __version__ = ['"](.*)['"]
 # version.filename = %(source.dir)s/main.py
 
-
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
 requirements = python3,kivy,arabic-reshaper,python-bidi==0.4.2
