@@ -1,6 +1,6 @@
 from kivy.config import Config #Font?
 from kivy.config import platform
-Config.set('kivy', 'default_font', ['vazir', 'Vazir-Medium.ttf', 'Vazir-Medium.ttf'])
+Config.set('kivy', 'default_font', ['vazir', 'assets/fonts/Vazir-Medium.ttf', 'assets/fonts/Vazir-Medium.ttf'])
 if platform in ("win", "linux", "macosx"):
     Config.set("graphics", "width", "470")
     Config.set("graphics", "height", "844")
@@ -18,6 +18,7 @@ from kivy.uix.image import Image
 from kivy.uix.behaviors import ButtonBehavior 
 from kivy.graphics import Color, Rectangle, Line
 
+from kivy.resources import resource_find
 from kivy.core.text import LabelBase
 
 import os
@@ -49,12 +50,19 @@ from screen_about_us import AboutUsScreen
 from screen_contact_us import ContactUsScreen
 
 
+# font_path = resource_find("src/assets/fonts/Vazir-Medium.ttf")
+# if not font_path:
+#     raise FileNotFoundError("Font not packaged: src/assets/fonts/Vazir-Medium.ttf")
+
+# LabelBase.register(name="vazir", fn_regular=font_path)
+
+
 # 1. Register your Persian font
 # 'Vazir' is the name you will use to reference the font in Kivy.
 # 'vazir.ttf' is the actual file name.
-LabelBase.register(name='vazir_bold', fn_regular='Vazir-Bold.ttf')
-LabelBase.register(name='vazir_light', fn_regular='Vazir-Light.ttf')
-LabelBase.register(name='vazir', fn_regular='Vazir-Medium.ttf')
+LabelBase.register(name='vazir_bold', fn_regular='assets/fonts/Vazir-Medium.ttf')
+LabelBase.register(name='vazir_light', fn_regular='assets/fonts/Vazir-Medium.ttf')
+LabelBase.register(name='vazir', fn_regular='assets/fonts/Vazir-Medium.ttf')
 
 # 2. Set the default font for all widgets
 # The 'all' category applies the font to all text in the application
