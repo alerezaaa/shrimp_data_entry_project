@@ -65,8 +65,8 @@ class HistoryRow(BoxLayout):
         # super().__init__(orientation='horizontal', padding=10, spacing=10, size_hint_y=None, height=40, **kwargs)
         super().__init__(
             orientation='horizontal', 
-            padding=50, 
-            spacing=40, 
+            padding=20, 
+            spacing=5, 
             size_hint_y=None, 
             height=sp(50), # or 40
             size_hint_x=None,  # Tell Kivy not to squash the width
@@ -163,7 +163,7 @@ class HistoryRow(BoxLayout):
 class HistoryScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        layout = BoxLayout(orientation='vertical', padding=20, spacing=10)
+        layout = BoxLayout(orientation='vertical', padding=70, spacing=60)
         layout.add_widget(Label(text=persian_text("تاریخچه محاسبات"), halign='right', font_name='vazir_bold', font_size=sp(24), size_hint=(1, 0.1)))  
         
         BTON_Layout = BoxLayout(orientation='horizontal', padding=30, spacing=30, size_hint=(1, 0.10))

@@ -78,7 +78,7 @@ class CalculationScreen(Screen):
         self.did_math = False
                 
         ## Create the page layout
-        layout = BoxLayout(orientation='vertical', padding=50, spacing=50)
+        layout = BoxLayout(orientation='vertical', padding=70, spacing=70)
 
         ## seperate input and calculation layout
         INPT_layout = BoxLayout(orientation='vertical', padding=30, spacing=30, size_hint=(1, 0.55))

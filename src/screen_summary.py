@@ -31,7 +31,7 @@ import arabic_reshaper
 class SummaryScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        layout = BoxLayout(orientation='vertical', padding=50, spacing=50)
+        layout = BoxLayout(orientation='vertical', padding=70, spacing=70)
         
         layout.add_widget(Label(text=persian_text("خلاصه اطلاعات"), halign='right', font_name='vazir_bold', font_size=sp(24), size_hint=(1, 0.1)))
         
