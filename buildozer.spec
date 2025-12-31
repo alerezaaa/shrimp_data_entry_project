@@ -125,7 +125,7 @@ android.ndk_api = 21
 #android.sdk_path =
 
 # (str) ANT directory (if empty, it will be automatically downloaded.)
-android.ant_path = ant
+android.ant_path = .buildozer/android/platform/apache-ant-1.9.4
 
 # (bool) If True, then skip trying to update the Android sdk
 # This can be useful to avoid excess Internet downloads or save time
