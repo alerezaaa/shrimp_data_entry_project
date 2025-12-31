@@ -28,22 +28,18 @@ jobs:
             .buildozer
           key: buildozer-${{ runner.os }}-${{ hashFiles('buildozer.spec') }}
 
-      - name: Workaround- pre-download Apache Ant 1.9.4
-        shell: bash
+      - name: Pre-download Apache Ant 1.9.4 (workaround)
         run: |
           set -e
           mkdir -p .buildozer/android/platform
           cd .buildozer/android/platform
-
-          if [ ! -d "apache-ant-1.9.4" ]; then
-            echo "Downloading Ant..."
+          if [ ! -d apache-ant-1.9.4 ]; then
             curl -4 -L --retry 5 --retry-delay 3 \
               -o apache-ant-1.9.4-bin.tar.gz \
               https://archive.apache.org/dist/ant/binaries/apache-ant-1.9.4-bin.tar.gz
             tar -xzf apache-ant-1.9.4-bin.tar.gz
-          else
-            echo "Ant already present."
           fi
+
 
       - name: Build APK (debug)
         shell: bash
