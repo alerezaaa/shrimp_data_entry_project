@@ -1,4 +1,4 @@
-name: Build Android APK
+name: Android APK
 
 on:
   workflow_dispatch:
@@ -7,39 +7,31 @@ on:
       - "v*"
 
 permissions:
-  contents: write   # needed to upload to Releases
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      # Optional cache: speeds up rebuilds
-      - name: Cache Buildozer global dir
-        uses: actions/cache@v4
-        with:
-          path: .buildozer_global
-          key: buildozer-global-${{ hashFiles('buildozer.spec') }}
-
-      - name: Build APK with Buildozer (debug)
+      - name: Build APK with Buildozer
         uses: ArtemSBulgakov/buildozer-action@v1
         id: buildozer
         with:
-          command: buildozer -v android debug
           workdir: .
           buildozer_version: stable
+          command: buildozer -v android debug
+        env:
+          USER: root
 
-      - name: Upload APK as workflow artifact (always)
+      - name: Upload as artifact (always)
         uses: actions/upload-artifact@v4
         with:
           name: apk
           path: ${{ steps.buildozer.outputs.filename }}
 
-      - name: Upload APK to GitHub Release (only on tags)
-        if: github.ref_type == 'tag'
+      - name: Upload to GitHub Release (on tags)
         uses: softprops/action-gh-release@v2
         with:
           files: ${{ steps.buildozer.outputs.filename }}
