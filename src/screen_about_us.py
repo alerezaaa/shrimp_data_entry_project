@@ -17,7 +17,7 @@ class AboutUsScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        root = BoxLayout(orientation="vertical", padding=20, spacing=10)
+        root = BoxLayout(orientation="vertical", padding=90, spacing=10)
 
         title = Label(
             text=persian_text("درباره ما"),

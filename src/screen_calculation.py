@@ -78,15 +78,15 @@ class CalculationScreen(Screen):
         self.did_math = False
                 
         ## Create the page layout
-        layout = BoxLayout(orientation='vertical', padding=70, spacing=70)
+        layout = BoxLayout(orientation='vertical', padding=90, spacing=20)
 
         ## seperate input and calculation layout
         INPT_layout = BoxLayout(orientation='vertical', padding=30, spacing=30, size_hint=(1, 0.55))
-        CALC_layout = BoxLayout(orientation='vertical', padding=30, spacing=30, size_hint=(1, 0.35))
-        BTON_Layout = BoxLayout(orientation='horizontal', padding=30, spacing=30, size_hint=(1, 0.10))
+        CALC_layout = BoxLayout(orientation='vertical', padding=30, spacing=30, size_hint=(1, 0.25))
+        BTON_Layout = BoxLayout(orientation='horizontal', padding=30, spacing=30, size_hint=(1, 0.15))
         
         
-        next_button = IconButton(text="ذخیره", size_hint=(0.5, 1))
+        next_button = IconButton(text="ذخیره", size_hint=(0.4, 1))
         next_button.bind(on_press=lambda x: go_to(self.manager, 'summary') if self.did_math else None)
         
         home_button = IconButton(text="صفحه اصلی", size_hint=(0.5, 1))

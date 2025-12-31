@@ -24,7 +24,7 @@ class GeneralInfoScreen(Screen):
         super().__init__(**kwargs)
         
         ## Create the page layout
-        layout = BoxLayout(orientation='vertical', padding=70, spacing=70)
+        layout = BoxLayout(orientation='vertical', padding=90, spacing=20)
         
         # Title
         layout.add_widget(Label(text=persian_text("مدیریت پرورش میگو"), halign='right', font_name='vazir_bold', font_size=30, size_hint=(1, 0.1)))
