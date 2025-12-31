@@ -30,7 +30,7 @@ class GeneralInfoScreen(Screen):
         layout.add_widget(Label(text=persian_text("مدیریت پرورش میگو"), halign='right', font_name='vazir_bold', font_size=30, size_hint=(1, 0.1)))
         
         # Logo
-        logo = Image(source='assets/images/shrimp_logo.jpg', size_hint=(1, 0.4), fit_mode="scale-down")
+        logo = Image(source='assets/images/shrimp_logo.jpg', size_hint=(1, 0.3), fit_mode="scale-down")
         layout.add_widget(logo)
         
         ###### Create a 4x4 buttom  style ######
@@ -46,7 +46,7 @@ class GeneralInfoScreen(Screen):
         print(isinstance(calc_btn, BoxLayout))  # True or False?
         
         ## Box for History
-        hist_btn = IconButton(icon_source='assets/images/6633209.png', text="تاریخچه")
+        hist_btn = IconButton(icon_source='assets/images/history.jpeg', text="تاریخچه")
         hist_btn.bind(on_press=lambda x: go_to(self.manager, 'history'))
         calc_box.add_widget(hist_btn)
         
@@ -57,13 +57,13 @@ class GeneralInfoScreen(Screen):
         second_box = BoxLayout(orientation='horizontal', size_hint=(1, 0.5), spacing=20, padding=30)
         
         ## Box for About us
-        abot_btn = IconButton(icon_source='assets/images/6633209.png', text="درباره ما")
+        abot_btn = IconButton(icon_source='assets/images/about_us.jpeg', text="درباره ما")
         abot_btn.bind(on_press=lambda x: go_to(self.manager, 'about_us'))
         second_box.add_widget(abot_btn)
         
         ## Box for Contact us
         cont_box = BoxLayout(orientation='horizontal', size_hint=(0.4, 0.4), spacing=10)
-        cont_btn = IconButton(icon_source='assets/images/6633209.png', text="تماس با ما")
+        cont_btn = IconButton(icon_source='assets/images/contact_us.jpeg', text="تماس با ما")
         cont_btn.bind(on_press=lambda x: go_to(self.manager, 'contact_us'))
         second_box.add_widget(cont_btn)
         
