@@ -1,5 +1,5 @@
 # Shrimp Data Entry Project
-#### Video Demo:  <URL HERE>
+#### Video Demo:  https://youtu.be/cSiOcsirqk4
 #### Description:
 A Python/Kivy-based data-entry application for recording and managing shrimp sample data.
 The app provides multiple screens for entering general information, performing calculations,
