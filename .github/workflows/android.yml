@@ -41,14 +41,34 @@ jobs:
           fi
 
 
-      - name: Build APK (debug)
-        shell: bash
-        run: |
-          docker run --rm \
-            -v "${{ github.workspace }}:/home/user/hostcwd" \
-            -v "${{ github.workspace }}/.buildozer:/home/user/.buildozer" \
-            --workdir /home/user/hostcwd \
-            kivy/buildozer -v android debug
+      - name: Build APK with Buildozer (accept licenses)
+        uses: ArtemSBulgakov/buildozer-action@v1
+        id: buildozer
+        with:
+          workdir: .
+          buildozer_version: stable
+          command: |
+            bash -lc '
+              set -e
+      
+              # 1) Trigger SDK setup (will likely fail fast at the license step the first time)
+              buildozer -v android debug || true
+      
+              # 2) Accept ALL SDK licenses non-interactively
+              SDKMANAGER="$(find "$ANDROIDSDK" -type f -name sdkmanager | head -n 1)"
+              echo "sdkmanager = $SDKMANAGER"
+              yes | "$SDKMANAGER" --licenses
+      
+              # 3) Ensure build-tools + platform tools are installed (aidl lives in build-tools)
+              "$SDKMANAGER" "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+      
+              # 4) Build again (now it should pass the aidl check)
+              buildozer -v android debug
+            '
+        env:
+          USER: root
+          PIP_BREAK_SYSTEM_PACKAGES: "1"
+
 
       - name: Upload APK as workflow artifact
         uses: actions/upload-artifact@v4
