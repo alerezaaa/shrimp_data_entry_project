@@ -10,3 +10,4 @@ Included assets (fonts and images) are in the `assets/` folder. Use `buildozer.s
 package the app for Android if you want a mobile build.
 
 #### Github repository (I will update): https://github.com/alerezaaa/shrimp_data_entry_project
+**Github Action to build APK file** also included in my repository
